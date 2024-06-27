@@ -1,37 +1,22 @@
 name: Images
-
 on:
   push:
-    branches: [ main ]
-  # pull_request:
-  #   branches: [ main ]
-
-env:
-  REGISTRY: registry.cn-hangzhou.aliyuncs.com
-  ALIYUN_REGISTRY_USER: "${{ secrets.ALIYUN_REGISTRY_USER }}"
-  ALIYUN_REGISTRY_PASSWORD: "${{ secrets.ALIYUN_REGISTRY_PASSWORD }}"
-  ALIYUN_REGISTRY_NAMESPACE: "${{ secrets.ALIYUN_REGISTRY_NAMESPACE }}"
-  MM_NOTIFY_URL: "${{ secrets.MM_NOTIFY_URL }}"
-
+    branches: [ master ]
 jobs:
-
   build:
     name: Pull
     runs-on: ubuntu-latest
     steps:
     - name: Setup Docker buildx
       uses: docker/setup-buildx-action@v3
-
     - name: Check out code
-      uses: actions/checkout@v2
-
+      uses: actions/checkout@v4
     - name: Build and push image to ACR EE
+      env:
+        ALIYUN_REGISTRY: "${{ secrets.ALIYUN_REGISTRY }}"
+        ALIYUN_REGISTRY_USER: "${{ secrets.ALIYUN_REGISTRY_USER }}"
+        ALIYUN_REGISTRY_PASSWORD: "${{ secrets.ALIYUN_REGISTRY_PASSWORD }}"
+        ALIYUN_REGISTRY_NAMESPACE: "${{ secrets.ALIYUN_REGISTRY_NAMESPACE }}"
       run: |
-        docker login -u $ALIYUN_REGISTRY_USER -p $ALIYUN_REGISTRY_PASSWORD $REGISTRY
-        PREFIX=$REGISTRY/$ALIYUN_REGISTRY_NAMESPACE sh pull.sh 
-        cat trigger.txt
-        if [ $MM_NOTIFY_URL ];then
-          curl -d '@trigger.txt' $MM_NOTIFY_URL
-        else
-          echo 'MM_NOTIFY_URL not set'
-        fi
+        docker login --username $ALIYUN_REGISTRY_USER --password $ALIYUN_REGISTRY_PASSWORD $ALIYUN_REGISTRY
+        PREFIX=$ALIYUN_REGISTRY/$ALIYUN_REGISTRY_NAMESPACE sh pull.sh 
