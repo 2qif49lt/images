@@ -10,6 +10,7 @@ env:
   REGISTRY: registry.cn-hangzhou.aliyuncs.com
   ALIYUN_REGISTRY_USER: "${{ secrets.ALIYUN_REGISTRY_USER }}"
   ALIYUN_REGISTRY_PASSWORD: "${{ secrets.ALIYUN_REGISTRY_PASSWORD }}"
+  ALIYUN_REGISTRY_NAMESPACE: "${{ secrets.ALIYUN_REGISTRY_NAMESPACE }}"
   MM_NOTIFY_URL: "${{ secrets.MM_NOTIFY_URL }}"
 
 jobs:
@@ -27,7 +28,7 @@ jobs:
     - name: Build and push image to ACR EE
       run: |
         docker login -u $ALIYUN_REGISTRY_USER -p $ALIYUN_REGISTRY_PASSWORD $REGISTRY
-        sh pull.sh
+        PREFIX=$REGISTRY/$ALIYUN_REGISTRY_NAMESPACE sh pull.sh 
         cat trigger.txt
         if [ $MM_NOTIFY_URL ];then
           curl -d '@trigger.txt' $MM_NOTIFY_URL
