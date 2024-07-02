@@ -1,2 +1,1 @@
-oryd/hydra:v2.2.0
-oryd/hydra-login-consent-node:v2.2.0
+casbin/casdoor:v1.634.0
