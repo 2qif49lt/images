@@ -1,1 +1,1 @@
-mysql:9.0
+mysql:8.0
