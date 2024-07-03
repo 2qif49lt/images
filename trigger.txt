@@ -1,1 +1,1 @@
-casbin/casdoor:v1.634.0
+mysql:9.0
