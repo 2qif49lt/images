@@ -1,1 +1,1 @@
-nginx:1.23-alpine
+registry:2.8
