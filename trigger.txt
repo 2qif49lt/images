@@ -1,1 +1,1 @@
-registry:2.8
+wordpress:6.6-php8.3
