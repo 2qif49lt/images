@@ -1,1 +1,1 @@
-worldpress:6.6-php8.3
+wordpress:6.6-php8.3
