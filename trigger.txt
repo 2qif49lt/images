@@ -1,1 +1,1 @@
-wordpress:6.6-php8.3
+ruby:2.6-slim
