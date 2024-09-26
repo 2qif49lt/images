@@ -1,1 +1,1 @@
-opa:0.68.0
+openpolicyagent/opa:0.68.0
