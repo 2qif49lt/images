@@ -1,1 +1,1 @@
-openpolicyagent/opa:0.68.0
+amazoncorretto:8
