@@ -1,1 +1,1 @@
-amazoncorretto:8
+redocly/redoc:v2.2.0
