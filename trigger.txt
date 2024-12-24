@@ -1,1 +1,1 @@
-mysql:5.6
+ubuntu:20.04
