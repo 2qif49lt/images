@@ -1,1 +1,1 @@
-ubuntu:20.04
+gcr.io/bazel-public/bazel:8.0.0
