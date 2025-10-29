@@ -1,1 +1,1 @@
-gcr.io/bazel-public/bazel:8.0.0
+kindest:v1.34.0
